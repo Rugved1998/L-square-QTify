@@ -10,7 +10,7 @@ event.preventDefault();
 
     return (<form className={styles.wrapper} onSubmit={formSubmit}>
         <input className={styles.search}  type="Area" placeholder={placeholder} required />
-        <button className={styles.searchButton} type="submit">Search </button>
+        <button className={styles.searchButton} type="submit"><SearchIcon /> </button>
     </form>);
 }
 

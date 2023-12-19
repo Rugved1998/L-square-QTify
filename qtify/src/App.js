@@ -1,12 +1,16 @@
 import '../src/styles/Theme.css';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Button from './components/Button/Button';
-import SearchBar from './components/SearchBar/SearchBar';
+import Navbar from './components/Navbar/Navbar';
+import React, {useState} from "react";
+
 
 function App() {
+  const [searchData, setSearchData]=useState();
+
   return (
     <div >
+      {/* Default code provided by React*/ }
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -23,8 +27,9 @@ function App() {
         <p> This is poopins Text</p>
       </header>
       <p> This is poopins Text</p> */}
-      <SearchBar placeholder={"Search a album of your choice"}></SearchBar>
-      <Button> Give Feedback</Button>
+      {/* <Logo></Logo> */}
+      <Navbar searchData={searchData}></Navbar>
+      
     </div>
   );
 }
