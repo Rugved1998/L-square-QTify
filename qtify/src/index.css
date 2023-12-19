@@ -14,7 +14,7 @@ code {
 
 @font-face {
   font-family: 'Poppins';
-  src: url('C:\Workspace\L-square-QTify\qtify\src\styles\Fonts\Poppins\Poppins-Regular.ttf') format('truetype'); 
+  src: url('styles/Fonts/Poppins/Poppins-Regular.ttf') format('truetype'); 
 }
 
 :root{

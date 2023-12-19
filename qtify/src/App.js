@@ -23,7 +23,7 @@ function App() {
         <p> This is poopins Text</p>
       </header>
       <p> This is poopins Text</p> */}
-      <SearchBar placheholder={"Search a album of your choice"}></SearchBar>
+      <SearchBar placeholder={"Search a album of your choice"}></SearchBar>
       <Button> Give Feedback</Button>
     </div>
   );
