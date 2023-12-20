@@ -1,6 +1,7 @@
 import '../src/styles/Theme.css';
 // import logo from './logo.svg';
 import './App.css';
+import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
 import React, {useState} from "react";
 
@@ -29,7 +30,7 @@ function App() {
       <p> This is poopins Text</p> */}
       {/* <Logo></Logo> */}
       <Navbar searchData={searchData}></Navbar>
-      
+      <Hero />
     </div>
   );
 }
