@@ -1,13 +1,39 @@
+import { StyledEngineProvider } from '@mui/material';
 import '../src/styles/Theme.css';
+import { fetchNewAlbums, fetchSongs, fetchTopAlbums } from './API/api';
 // import logo from './logo.svg';
 import './App.css';
-import Hero from './components/Hero/Hero';
+// import Hero from './components/Hero/Hero';
 import Navbar from './components/Navbar/Navbar';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { Outlet } from 'react-router-dom';
+
 
 
 function App() {
-  const [searchData, setSearchData]=useState();
+  const [searchData, useSearchData]=useState();
+  const [data, setData]=useState({});
+
+  const generateData=(key,source)=>{
+    source().then((data)=>{
+      setData((prevData)=>{
+        
+        return {...prevData, [key]:data};
+      });
+    });
+   
+  };
+
+  useEffect(()=>{
+    generateData("topAlbums", fetchTopAlbums);
+    generateData("newAlbums", fetchNewAlbums);
+    generateData("topSongs", fetchSongs);
+
+  },[]);
+
+  const{topAlbums=[], newAlbums=[], songs=[]}= data;
+
+  
 
   return (
     <div >
@@ -29,10 +55,14 @@ function App() {
       </header>
       <p> This is poopins Text</p> */}
       {/* <Logo></Logo> */}
-      <Navbar searchData={searchData}></Navbar>
-      <Hero />
+      <StyledEngineProvider injectFirst>
+      <Navbar searchData={[...topAlbums,...newAlbums]} />
+      {/* <Hero /> */}
+      <Outlet context={{data: {topAlbums,newAlbums,songs}}}/>
+      </StyledEngineProvider>
     </div>
   );
 }
+
 
 export default App;
