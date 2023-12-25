@@ -85,6 +85,6 @@ a:active{
 }
 
 .swipper-slide{
-  width:auto !important;
+  /* width: auto !important; */
 }
 

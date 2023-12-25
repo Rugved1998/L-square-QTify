@@ -1,18 +1,29 @@
 // import Swiper core and required modules
 import { Navigation } from 'swiper/modules';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import styles from './Carousel.module.css';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
+import CarouselLeft from './CarouselLeft/CarouselLeft';
+import CarouselRight from './CarouselRight/CarouselRight';
+import { useEffect } from 'react';
+// import 'swiper/css/navigation';
+
+const Controls = ({data})=>{
+   const swiper = useSwiper();
+   useEffect(()=>{
+      swiper.slideTo(0);
+   },[data]);
+   return(<></>);
+}
 
 
 function Carousel({data, renderComponent}){
     return(
        <div className={styles.wrapper}>
-         <Swiper
+         <Swiper 
       // install Swiper modules
       style={{padding:"0px 20px"}}
       initialSlide={0}
@@ -21,9 +32,12 @@ function Carousel({data, renderComponent}){
       slidesPerView={"auto"}
       allowTouchMove
     >
-    {data.map((element)=>{
-     <SwiperSlide>{renderComponent(element)}</SwiperSlide>   
-    })}
+      <Controls data={data} />
+      <CarouselLeft />
+      <CarouselRight />
+    {data.map((element)=>(
+     <SwiperSlide className={styles.slide} key={element.id}>{renderComponent(element)}</SwiperSlide>   
+    ))}
       
     </Swiper>
        </div>
