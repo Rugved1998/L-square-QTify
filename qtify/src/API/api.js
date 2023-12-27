@@ -30,4 +30,16 @@ export const fetchSongs= async()=>{
     catch(error){
         console.error(error);
     }
+
+}
+
+export const fetchFilters= async()=>{
+    try{
+        let response= await axios.get(`${BackendPoint}genres`);
+        return response.data
+    }
+    catch(error){
+        console.error(error);
+    }
+
 }

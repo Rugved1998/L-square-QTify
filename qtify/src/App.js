@@ -17,18 +17,20 @@ function App() {
   const generateData=(key,source)=>{
     source().then((data)=>{
       setData((prevData)=>{
-        
+       
         return {...prevData, [key]:data};
       });
     });
-   
+    
   };
 
   useEffect(()=>{
     generateData("topAlbums", fetchTopAlbums);
     generateData("newAlbums", fetchNewAlbums);
-    generateData("topSongs", fetchSongs);
+    generateData("songs", fetchSongs);
 
+   
+   
   },[]);
 
   const{topAlbums=[], newAlbums=[], songs=[]}= data;
@@ -55,6 +57,7 @@ function App() {
       </header>
       <p> This is poopins Text</p> */}
       {/* <Logo></Logo> */}
+
       <StyledEngineProvider injectFirst>
       <Navbar searchData={[...topAlbums,...newAlbums]} />
       {/* <Hero /> */}
